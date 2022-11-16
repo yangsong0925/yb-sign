@@ -26,7 +26,7 @@ import java.util.Map;
  **/
 @Log4j2
 @RestController
-@RequestMapping("/yb")
+//@RequestMapping("/yb")
 public class YbController {
 
     private static final String priKey = "4ab619fca6be7f767796de13028db4e478a17938c8aacbf5908661e2a5765d1b";

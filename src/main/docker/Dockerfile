@@ -1,4 +1,4 @@
-FROM hub.c.163.com/library/java:8-alpine
+FROM arm32jdk:8
 
 ADD yb-sign.jar app.jar
 

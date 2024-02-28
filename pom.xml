@@ -118,41 +118,41 @@
                         </goals>
                     </execution>
                 </executions>
-                <configuration>
-<!--                    <serverId>harbor</serverId>-->
-<!--                    <registryUrl>http://${docker.repostory}</registryUrl>-->
-<!--                    &lt;!&ndash;Building image 192.168.0.20/demo1&ndash;&gt;-->
-<!--                    <imageName>${docker.repostory}/${docker.registry.name}/${project.artifactId}:${project.version}</imageName>-->
+<!--                <configuration>-->
+<!--&lt;!&ndash;                    <serverId>harbor</serverId>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <registryUrl>http://${docker.repostory}</registryUrl>&ndash;&gt;-->
+<!--&lt;!&ndash;                    &lt;!&ndash;Building image 192.168.0.20/demo1&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                    <imageName>${docker.repostory}/${docker.registry.name}/${project.artifactId}:${project.version}</imageName>&ndash;&gt;-->
 
-                    <imageName>${project.build.finalName}</imageName>
-                    <!--指定标签 这里指定的是镜像的版本，我们默认版本是latest-->
-                    <imageTags>
-                        <imageTag>latest</imageTag>
-                    </imageTags>
-                    <!--指定基础镜像jdk1.8-->
-<!--                    <baseImage>jdk:1.8</baseImage>-->
-                    <!-- 指定 Dockerfile 路径-->
-                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+<!--                    <imageName>${project.build.finalName}</imageName>-->
+<!--                    &lt;!&ndash;指定标签 这里指定的是镜像的版本，我们默认版本是latest&ndash;&gt;-->
+<!--                    <imageTags>-->
+<!--                        <imageTag>latest</imageTag>-->
+<!--                    </imageTags>-->
+<!--                    &lt;!&ndash;指定基础镜像jdk1.8&ndash;&gt;-->
+<!--&lt;!&ndash;                    <baseImage>jdk:1.8</baseImage>&ndash;&gt;-->
+<!--                    &lt;!&ndash; 指定 Dockerfile 路径&ndash;&gt;-->
+<!--                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>-->
 
-                    <!--镜像制作人本人信息 -->
-                    <!--<maintainer>1090239782@qq.com</maintainer>-->
-                    <!--切换到工作目录-->
-                    <workdir>/opt</workdir>
-                    <!--${project.build.finalName}.jar是打包后生成的jar包的名字-->
-                    <entryPoint>["java", "-jar","-Xms256m","-Xmx512m","/${project.build.finalName}.jar"]</entryPoint>
-                    <!--必须配置dockerHost标签（除非配置系统环境变量DOCKER_HOST）-->
-                    <dockerHost>http://43.142.171.192:12375</dockerHost>
-                    <!-- jar包位置-->
-                    <resources>
-                        <resource>
-                            <targetPath>/</targetPath>
-                            <!-- target目录下-->
-                            <directory>${project.build.directory}</directory>
-                            <!--通过jar包名找到jar包-->
-                            <include>${project.build.finalName}.jar</include>
-                        </resource>
-                    </resources>
-                </configuration>
+<!--                    &lt;!&ndash;镜像制作人本人信息 &ndash;&gt;-->
+<!--                    &lt;!&ndash;<maintainer>1090239782@qq.com</maintainer>&ndash;&gt;-->
+<!--                    &lt;!&ndash;切换到工作目录&ndash;&gt;-->
+<!--                    <workdir>/opt</workdir>-->
+<!--                    &lt;!&ndash;${project.build.finalName}.jar是打包后生成的jar包的名字&ndash;&gt;-->
+<!--                    <entryPoint>["java", "-jar","-Xms256m","-Xmx512m","/${project.build.finalName}.jar"]</entryPoint>-->
+<!--                    &lt;!&ndash;必须配置dockerHost标签（除非配置系统环境变量DOCKER_HOST）&ndash;&gt;-->
+<!--                    <dockerHost>http://43.142.171.192:12375</dockerHost>-->
+<!--                    &lt;!&ndash; jar包位置&ndash;&gt;-->
+<!--                    <resources>-->
+<!--                        <resource>-->
+<!--                            <targetPath>/</targetPath>-->
+<!--                            &lt;!&ndash; target目录下&ndash;&gt;-->
+<!--                            <directory>${project.build.directory}</directory>-->
+<!--                            &lt;!&ndash;通过jar包名找到jar包&ndash;&gt;-->
+<!--                            <include>${project.build.finalName}.jar</include>-->
+<!--                        </resource>-->
+<!--                    </resources>-->
+<!--                </configuration>-->
             </plugin>
         </plugins>
     </build>

@@ -26,16 +26,14 @@ import java.util.Map;
  **/
 @Log4j2
 @RestController
-@RequestMapping("/yb")
+//@RequestMapping("/yb")
 public class YbController {
-
-    private static final String priKey = "4ab619fca6be7f767796de13028db4e478a17938c8aacbf5908661e2a5765d1b";
-    private static final String pubKey = "bd4c6d68e041808516eb6c93e92164630e006dc64bac093241bcc2ef45baccce15c1c3da8418ed7d1530a7fa545c3b064b366d4499863448261231fe17a40290";
-
 
     @PostMapping("gm_sign_key")
     public R<String> gm_sign_key(@RequestBody Map<String, String> body) {
         String signSource = MapUtil.getStr(body, "input");
+        String priKey = MapUtil.getStr(body, "priKey");
+        String pubKey = MapUtil.getStr(body, "pubKey");
         byte[] bytes = signSource.getBytes(StandardCharsets.UTF_8);
         byte[] returnStr = new byte[bytes.length + (1024 * 10)];
         int count = HsafsitoolLibrary.INSTANCE.gm_sign_key(null, priKey, pubKey, bytes, bytes.length, returnStr);
@@ -49,6 +47,8 @@ public class YbController {
     @PostMapping("gm_ecb_encrypt_key")
     public R<String> gm_ecb_encrypt_key(@RequestBody Map<String, String> body) {
         String input = MapUtil.getStr(body, "input");
+        String priKey = MapUtil.getStr(body, "priKey");
+        String pubKey = MapUtil.getStr(body, "pubKey");
         byte[] bytes = input.getBytes(StandardCharsets.UTF_8);
         byte[] returnStr = new byte[bytes.length + (1024 * 10)];
         int count = HsafsiyhsafeLibrary.INSTANCE.gm_ecb_encrypt_key(pubKey, bytes, bytes.length, returnStr);
@@ -62,6 +62,8 @@ public class YbController {
     @PostMapping("gm_ecb_decrypt_key")
     public R<String> gm_ecb_decrypt_key(@RequestBody Map<String, String> body) {
         String input = MapUtil.getStr(body, "input");
+        String priKey = MapUtil.getStr(body, "priKey");
+        String pubKey = MapUtil.getStr(body, "pubKey");
         byte[] bytes = input.getBytes(StandardCharsets.UTF_8);
         byte[] returnStr = new byte[bytes.length + (1024 * 10)];
         int count = HsafsiyhsafeLibrary.INSTANCE.gm_ecb_decrypt_key(pubKey, bytes, bytes.length, returnStr);
@@ -71,5 +73,4 @@ public class YbController {
         String inputRe = new String(returnStr, StandardCharsets.UTF_8);
         return R.success(inputRe.trim());
     }
-
 }
